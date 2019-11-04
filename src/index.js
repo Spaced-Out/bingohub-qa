@@ -1,3 +1,5 @@
+import 'react-app-polyfill/stable';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router, browserHistory} from 'react-router';
@@ -10,7 +12,7 @@ import './index.css';
 
 
 const fakeState = {
-  games: {'f': {id: 'f', name: "Animals", size: 3, words: ['bear', 'penguin', 'frog', 'dog', 'cat', 'whale', 'seal', 'chicken', 'cow'], playerCount: 4}},
+  games: new Map([['f', {id: 'f', name: "Animals", size: 3, words: ['bear', 'penguin', 'frog', 'dog', 'cat', 'whale', 'seal', 'chicken', 'cow'], playerCount: 4}]]),
 };
 
 const store = createStore(reducers, fakeState);

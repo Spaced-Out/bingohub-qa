@@ -1,6 +1,8 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import {Link} from 'react-router';
+
+import {deleteGame} from './actions';
 
 import Nav from './Nav';
 
@@ -11,22 +13,37 @@ const mapStateToProps = state => ({
   games: Object.values(state.games),
 });
 
-const List = ({games}) => (
+const List = () => {
+  const dispatch = useDispatch();
+  const games = Array.from(useSelector(state => state.games).values());
+
+  const handleClick = (gameId) => {
+    const yes = confirm('Are you sure?'); // eslint-disable-line no-restricted-globals
+    if (yes) {
+      dispatch(deleteGame(gameId));
+    }
+  };
+
+  return (
   <Nav>
     <div className="games">
       { games.map(game => (
-        <Link className="game" to={`/${game.id}`} key={game.id}>
-          <div className="game-name">{game.name}</div>
+        <div className="game" key={game.id}>
+          <Link className="game-name" to={`/${game.id}`}>{game.name}</Link>
           <div className="game-info">
             <span className="game-playerCount">{game.playerCount} players</span>
             <span className="game-dot"> &middot; </span>
             <span className="game-playerCount">{game.size}x{game.size}</span>
           </div>
-        </Link>
+          <div className="game-actions">
+            <span onClick={() => handleClick(game.id)}>delete</span>
+          </div>
+        </div>
       )) }
     </div>
   </Nav>
 );
+};
 
-export default connect(mapStateToProps)(List);
+export default List;
 

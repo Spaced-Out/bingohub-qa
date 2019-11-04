@@ -20,3 +20,11 @@
   color: #9b9b9b;
 }
 
+.game-actions {
+  margin-top: 6px;
+}
+
+.game-actions > * {
+  margin-right: 1em;
+  cursor: pointer;
+}
