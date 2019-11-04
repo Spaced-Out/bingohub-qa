@@ -35,7 +35,7 @@ export default function GameForm({
 
         <label>
           <div>Words</div>
-          <textarea name="words" defaultValue={game.words.join(', ')}></textarea>
+          <textarea name="words" defaultValue={game.words ? game.words.join(', ') : null}></textarea>
         </label>
 
         <button className="creator-submit">{submitLabel}</button>
