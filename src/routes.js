@@ -5,6 +5,7 @@ import App from './App';
 import List from './List';
 import Creator from './Creator';
 import Game from './Game';
+import Editor from './Editor';
 
 
 export default (
@@ -12,6 +13,7 @@ export default (
     <IndexRoute component={List} />
     <Route path="new" component={Creator} />
     <Route path=":gameId" component={Game} />
+    <Route path=":gameId/edit" component={Editor} />
   </Route>
 );
 

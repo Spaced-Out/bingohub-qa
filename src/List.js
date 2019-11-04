@@ -36,6 +36,7 @@ const List = () => {
             <span className="game-playerCount">{game.size}x{game.size}</span>
           </div>
           <div className="game-actions">
+            <Link to={`/${game.id}/edit`}>edit</Link>
             <span onClick={() => handleClick(game.id)}>delete</span>
           </div>
         </div>

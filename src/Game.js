@@ -9,7 +9,7 @@ import './Game.css';
 
 
 const mapStateToProps = (state, {params: {gameId}}) => ({
-  game: state.games[gameId],
+  game: state.games.get(gameId),
 });
 
 const Game = ({game}) => {
@@ -22,8 +22,8 @@ const Game = ({game}) => {
   return (
     <Nav title={game.name}>
       <div className="game-cards">
-        { cards.map(card =>
-          <Card card={card} key={card.id} />
+        { cards.map((card, i) =>
+          <Card card={card} key={i} />
         ) }
       </div>
     </Nav>
